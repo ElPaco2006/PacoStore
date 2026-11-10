@@ -1,0 +1,10 @@
+name: Paco-Store
+services:
+  db:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: elpapu31
+    volumes:
+      - ./postgres_data:/var/lib/postgresql
+    ports:
+      - 5432:5432
