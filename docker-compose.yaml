@@ -1,0 +1,13 @@
+name: Paco-Store
+services:
+  database:
+    image: postgres:18
+    environment:
+      POSTGRES_USER: paco
+      POSTGRES_PASSWORD: elpapu31
+      POSTGRES_DB: paco_store
+    volumes:
+      - ${PWD}/db-data/:/var/lib/postgresql/
+      - ${PWD}/init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5432:5432"
