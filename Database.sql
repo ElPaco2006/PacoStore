@@ -62,7 +62,7 @@ create table paco_store.product
     supplier_id uuid
         constraint product_supplier_fk
             references paco_store.supplier (supplier_id),
-    price       money not null
+    price       numeric not null check ( price::numeric > 0 )
 );
 
 -- Venta
@@ -94,8 +94,8 @@ create table paco_store.sale_detail
     product_id     uuid
         constraint sale_detail_product_fk
             references paco_store.product (product_id),
-    amount         numeric not null,
-    price          money   not null
+    amount         numeric not null check ( amount > 0 ),
+    price          money   not null check ( price::numeric > 0 )
 );
 
 -- Inventario
@@ -138,7 +138,7 @@ create table paco_store.return_detail
     sale_detail_id   uuid
         constraint return_detail_sale_detail_fk
             references paco_store.sale_detail (sale_detail_id),
-    amount           numeric not null
+    amount           numeric not null check ( amount > 0 )
 );
 
 -- Reabastecimiento
@@ -158,7 +158,7 @@ create table paco_store.resupply
             references paco_store.supplier (supplier_id),
     resupply_when timestamp with time zone not null
         default now(),
-    amount        numeric                  not null
+    amount        numeric                  not null check ( amount > 0 )
 );
 
 -- Usuario
