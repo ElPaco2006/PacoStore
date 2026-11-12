@@ -107,7 +107,9 @@ create table paco_store.stock
     product_id uuid
         constraint stock_product_fk
             references paco_store.product (product_id),
-    balance    numeric not null
+    balance    numeric not null,
+
+    primary key (store_id, product_id)
 );
 
 -- Devolución
