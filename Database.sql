@@ -138,3 +138,17 @@ create table paco_store.return_detail
             references paco_store.sale_detail (sale_detail_id),
     amount           float not null
 );
+
+-- Usuario
+-- TODO: 'text' may not be the most efficient way to store a password hash
+create table paco_store.user
+(
+    user_id  uuid
+        constraint user_pk
+            primary key,
+    store_id uuid
+        constraint user_store_fk
+            references paco_store.store (store_id),
+    username text not null,
+    password text not null
+)
