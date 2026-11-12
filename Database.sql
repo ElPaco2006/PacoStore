@@ -94,8 +94,8 @@ create table paco_store.sale_detail
     product_id     uuid
         constraint sale_detail_product_fk
             references paco_store.product (product_id),
-    amount         float not null,
-    price          money not null
+    amount         numeric not null,
+    price          money   not null
 );
 
 -- Inventario
@@ -107,7 +107,7 @@ create table paco_store.stock
     product_id uuid
         constraint stock_product_fk
             references paco_store.product (product_id),
-    balance    float not null
+    balance    numeric not null
 );
 
 -- Devolución
@@ -136,7 +136,7 @@ create table paco_store.return_detail
     sale_detail_id   uuid
         constraint return_detail_sale_detail_fk
             references paco_store.sale_detail (sale_detail_id),
-    amount           float not null
+    amount           numeric not null
 );
 
 -- Reabastecimiento
@@ -156,7 +156,7 @@ create table paco_store.resupply
             references paco_store.supplier (supplier_id),
     resupply_when timestamp with time zone not null
         default now(),
-    amount        float                    not null
+    amount        numeric                  not null
 );
 
 -- Usuario
