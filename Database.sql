@@ -123,8 +123,8 @@ create table paco_store.return_detail
     return_detail_id  uuid
         constraint return_detail_pk
             primary key,
-    product_id uuid
-        constraint return_detail_product_fk
-            references paco_store.product (product_id),
+    sale_detail_id uuid
+        constraint return_detail_sale_detail_fk
+            references paco_store.sale_detail (sale_detail_id),
     amount     float not null
 );
