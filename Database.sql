@@ -1,6 +1,7 @@
 drop schema if exists paco_store cascade;
 create schema paco_store;
 
+-- TODO: More fields
 create type paco_store.address as
     (
     street text,
