@@ -1,4 +1,4 @@
-drop schema if exists paco_store cascade;
+-- drop schema if exists paco_store cascade;
 create schema paco_store;
 
 -- TODO: More fields
