@@ -139,6 +139,26 @@ create table paco_store.return_detail
     amount           float not null
 );
 
+-- Reabastecimiento
+create table paco_store.resupply
+(
+    resupply_id   uuid
+        constraint resupply_pk
+            primary key,
+    store         uuid
+        constraint resupply_store_fk
+            references paco_store.store (store_id),
+    product_id    uuid
+        constraint resupply_product_fk
+            references paco_store.product (product_id),
+    supplier_id   uuid
+        constraint resupply_supplier_fk
+            references paco_store.supplier (supplier_id),
+    resupply_when timestamp with time zone not null
+        default now(),
+    amount        float                    not null
+)
+
 -- Usuario
 -- TODO: 'text' may not be the most efficient way to store a password hash
 create table paco_store.user
