@@ -157,7 +157,7 @@ create table paco_store.resupply
     resupply_when timestamp with time zone not null
         default now(),
     amount        float                    not null
-)
+);
 
 -- Usuario
 -- TODO: 'text' may not be the most efficient way to store a password hash
