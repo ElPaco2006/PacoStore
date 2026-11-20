@@ -1,2 +1,6 @@
 .idea
-db-data
+.vscode
+
+database/data
+node_modules
+.env
