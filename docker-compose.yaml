@@ -6,28 +6,35 @@ services:
       - ./src/frontend:/usr/share/nginx/html
     ports:
       - "6767:80"
+    networks:
+      - frontend
 
   backend:
     image: node:26
     user: node
-    working_dir: /home/node/app
-    environment:
-      - NODE_ENV=development
+    working_dir: /home/node/app    
     volumes:
       - ./:/home/node/app
+    command: ['npm', 'run', 'dev']
     ports:
-      - "8888:8888"
-    command: ['npm', 'run', 'dev']      
+      - "6868:8888"
+    networks:
+      - frontend
+      - backend
   
   database:
     image: postgres:18
-    env_file:
-      - env/.env
-    volumes:
-      - db-data:/var/lib/postgresql/
+    environment:
+      POSTGRES_USER: paco
+      POSTGRES_PASSWORD: elpapu31
+      POSTGRES_DB: paco-store
+    volumes:      
       - ./database/db.sql:/docker-entrypoint-initdb.d/db.sql
     ports:
-      - "5432:5432"
+      - "6969:5432" 
+    networks:
+      - backend
 
-volumes:
-  db-data:
+networks:
+  frontend:
+  backend:
