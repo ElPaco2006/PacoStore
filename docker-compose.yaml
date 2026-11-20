@@ -10,18 +10,19 @@ services:
   backend:
     image: node:26
     user: node
-    working_dir: ${PWD}/src/backend
+    working_dir: /home/node/app
+    environment:
+      - NODE_ENV=development
     volumes:
-      - ./src/backend:/home/node/app
+      - ./:/home/node/app
     ports:
       - "8888:8888"
-    command:
-      - "npm start"
+    command: ['npm', 'run', 'dev']      
   
   database:
     image: postgres:18
     env_file:
-      - .env
+      - env/.env
     volumes:
       - db-data:/var/lib/postgresql/
       - ./database/db.sql:/docker-entrypoint-initdb.d/db.sql

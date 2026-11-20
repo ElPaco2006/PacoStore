@@ -1,8 +1,10 @@
 import { pool } from "../db.js";
 // NOTE: BROKEN AF, is unrelated code
 export const getStores = async (req, res) => {
-    const response = await pool.query("SELECT * FROM Stores ORDER BY id ASC");
-    res.status(200).json(response.rows);
+    //const response = await pool.query("SELECT * FROM Stores ORDER BY id ASC");
+    //res.send("Hello, Frontend");
+    res.json({message: "Hello, Frontend!"})
+    //res.status(200).json(response.rows);
 };
 
 export const getStoreById = async (req, res) => {
