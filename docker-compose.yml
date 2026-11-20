@@ -35,6 +35,7 @@ services:
       POSTGRES_USER: ${DB_USER}
       POSTGRES_PASSWORD: ${DB_PASSWORD}
       POSTGRES_PORT: ${DATABASE_PORT}
+    command: ['postgres', '-p', "${DATABASE_PORT}"]
     volumes:      
       - ./database/db.sql:/docker-entrypoint-initdb.d/db.sql
     ports:
