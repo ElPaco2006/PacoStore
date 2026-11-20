@@ -1,10 +1,15 @@
 
 async function call_backend() {
-    const r = await fetch("http://backend:8888/store");
-    const json = await r.json();
-    console.log(json);
-    document.getElementById("out").innerText = json.message;
-    return json;
+    try {
+        const r = await fetch("http://localhost:6868/store");
+        const json = await r.json();
+        console.log(json);
+        document.getElementById("out").innerText = json.message;
+        return json;    
+    } catch (error) {
+        document.getElementById("out").innerText = error.message;
+    }
+    
 }
 
 call_backend();

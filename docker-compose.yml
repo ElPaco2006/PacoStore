@@ -2,36 +2,43 @@ name: Paco-Store
 services:
   frontend:
     image: nginx:latest
+    env_file:
+      - .env
     volumes:
       - ./src/frontend:/usr/share/nginx/html
     ports:
-      - "6767:80"
+      - "${DOCKER_CLIENT_PORT_FORWARD}:${CLIENT_PORT}"
     networks:
       - frontend
 
   backend:
     image: node:26
+    env_file:
+     - .env
     user: node
     working_dir: /home/node/app    
     volumes:
       - ./:/home/node/app
     command: ['npm', 'run', 'dev']
     ports:
-      - "6868:8888"
+      - "${DOCKER_SERVER_PORT_FORWARD}:${SERVER_PORT}"
     networks:
       - frontend
       - backend
   
   database:
     image: postgres:18
+    env_file:
+      - .env
     environment:
-      POSTGRES_USER: paco
-      POSTGRES_PASSWORD: elpapu31
-      POSTGRES_DB: paco-store
+      POSTGRES_DB: ${DB_DATABASE}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_PORT: ${DATABASE_PORT}
     volumes:      
       - ./database/db.sql:/docker-entrypoint-initdb.d/db.sql
     ports:
-      - "6969:5432" 
+      - "${DOCKER_DATABASE_PORT_FORWARD}:${DATABASE_PORT}" 
     networks:
       - backend
 

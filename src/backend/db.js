@@ -8,11 +8,11 @@ import {
 } from "./config.js";
 
 export const pool = new pg.Pool({
-    user: 'paco',
-    host: 'database',
-    password: 'elpapu31',
-    database: 'paco-store',
-    port: 5432,
+    user: DB_USER,
+    password: DB_PASSWORD,
+    database: DB_DATABASE,
+    host: DB_HOST,
+    port: DB_PORT,
 });
 
 pool.query("SELECT NOW()").then((result) => {
