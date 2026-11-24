@@ -2,6 +2,7 @@ import express, {Router} from "express";
 import morgan from "morgan";
 import {API_PREFIX, PORT} from "./config.js";
 import customer_routes from "./routes/customer.routes.js";
+import product_routes from "./routes/product.routes.js";
 
 const app = express();
 
@@ -12,6 +13,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.use(API_PREFIX, customer_routes);
+app.use(API_PREFIX, product_routes);
 
 const router = Router();
 router.get(API_PREFIX, (req, res) => {
