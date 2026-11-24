@@ -187,3 +187,27 @@ create table resupply
                         default now(),
     amount        numeric                  not null check ( amount > 0 )
 );
+
+INSERT INTO supplier (name, phone_number, email)
+VALUES ('TRUPER', '', 'contact@truper.com'),
+       ('PRETUL', '', 'contact@pretul.com');
+
+INSERT INTO product (sku, name, price, supplier_id)
+VALUES ('MACH-18X', 'Machete doble filo 18"', 200, (SELECT supplier_id FROM supplier WHERE name = 'TRUPER')),
+       ('TRU-001', 'Martillo de uña', 185.00, (SELECT supplier_id FROM supplier WHERE name = 'TRUPER')),
+       ('TRU-002', 'Pinzas de presión', 145.00, (SELECT supplier_id FROM supplier WHERE name = 'TRUPER')),
+       ('TRU-003', 'Desarmador plano', 65.00, (SELECT supplier_id FROM supplier WHERE name = 'TRUPER')),
+       ('TRU-004', 'Desarmador Phillips', 70.00, (SELECT supplier_id FROM supplier WHERE name = 'TRUPER')),
+       ('TRU-005', 'Cinta métrica 5m', 95.00, (SELECT supplier_id FROM supplier WHERE name = 'TRUPER')),
+       ('TRU-006', 'Nivel de aluminio', 220.00, (SELECT supplier_id FROM supplier WHERE name = 'TRUPER')),
+       ('TRU-007', 'Llave ajustable', 180.00, (SELECT supplier_id FROM supplier WHERE name = 'TRUPER')),
+       ('TRU-008', 'Arco para segueta', 130.00, (SELECT supplier_id FROM supplier WHERE name = 'TRUPER')),
+
+       ('PRE-001', 'Martillo de bola', 120.00, (SELECT supplier_id FROM supplier WHERE name = 'PRETUL')),
+       ('PRE-002', 'Pinzas universales', 85.00, (SELECT supplier_id FROM supplier WHERE name = 'PRETUL')),
+       ('PRE-003', 'Juego de desarmadores', 160.00, (SELECT supplier_id FROM supplier WHERE name = 'PRETUL')),
+       ('PRE-004', 'Cinta métrica 3m', 55.00, (SELECT supplier_id FROM supplier WHERE name = 'PRETUL')),
+       ('PRE-005', 'Llave española', 90.00, (SELECT supplier_id FROM supplier WHERE name = 'PRETUL')),
+       ('PRE-006', 'Cutter metálico', 45.00, (SELECT supplier_id FROM supplier WHERE name = 'PRETUL')),
+       ('PRE-007', 'Lima para metal', 75.00, (SELECT supplier_id FROM supplier WHERE name = 'PRETUL')),
+       ('PRE-008', 'Segueta manual', 65.00, (SELECT supplier_id FROM supplier WHERE name = 'PRETUL'));
