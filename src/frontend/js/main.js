@@ -1,16 +1,22 @@
 import {API_ENDPOINT} from "./config.js";
 
-async function call_backend() {
-    try {
-        const r = await fetch(API_ENDPOINT + "/store");
-        const json = await r.json();
-        console.log(json);
-        document.getElementById("out").innerText = json.message;
-        return json;    
-    } catch (error) {
-        document.getElementById("out").innerText = error.message;
-    }
-    
+const add_detail_form = document.getElementById("form");
+const tbody = document.getElementById("sale-details");
+
+form.onsubmit = (e) => {
+    e.preventDefault();
+    add_row();
+    add_row();
+    add_row();
+    add_row();
+    add_row();
 }
 
-call_backend();
+function add_row() {
+    const row =  tbody.insertRow();
+    row.insertCell().innerText = 'abc';
+    row.insertCell().innerText = 'Producto';
+    row.insertCell().innerText = '1';
+    row.insertCell().innerText = '67';
+    row.insertCell().innerText = '67';
+}

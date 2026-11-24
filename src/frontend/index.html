@@ -6,9 +6,72 @@
 
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-    <h1>Hello, World!</h1>
-    <p id="out"></p>
-    <script src="js/main.js" type="module"></script>
+<body class="page">
+
+<header>
+    <h1>Paco Store</h1>
+</header>
+
+<aside>
+    <nav>
+        <ul>
+            <li><a href="#">Clientes</a></li>
+            <li><a href="#">Productos</a></li>
+            <li><a href="#">Ventas</a></li>
+        </ul>
+    </nav>
+</aside>
+
+<main>
+    <div class="products">
+        <table>
+            <caption>Ventas</caption>
+            <thead>
+            <tr>
+                <th>SKU</th>
+                <th>Nombre</th>
+                <th>Cantidad</th>
+                <th>Precio unitario</th>
+                <th>Total</th>
+            </tr>
+            </thead>
+            <tbody id="sale-details">
+            <tr>
+                <td>123</td>
+                <td>Taladro</td>
+                <td>1</td>
+                <td>$100</td>
+                <td>$100</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>Clavos (kg)</td>
+                <td>2.3</td>
+                <td>$20</td>
+                <td>$46</td>
+            </tr>
+            </tbody>
+            <tfoot>
+            <tr>
+                <td colspan="5">$146</td>
+            </tr>
+            </tfoot>
+        </table>
+    </div>
+
+    <form action="" id="form">
+        <fieldset>
+            <input type="text" name="" id="" placeholder="Producto">
+            <input type="number" name="" id="" placeholder="Cantidad">
+            <button>Agregar</button>
+        </fieldset>
+    </form>
+</main>
+
+<footer>
+    <p>&copy; 2026 Paco Store</p>
+</footer>
+
+<script src="js/main.js" type="module"></script>
 </body>
 </html>
