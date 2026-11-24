@@ -15,6 +15,6 @@ export const pool = new pg.Pool({
     port: DB_PORT,
 });
 
-pool.query("SELECT NOW()").then((result) => {
-    console.log(result);
-});
+// pool.query("SELECT NOW()").then((result) => {
+//     console.log(result);
+// });

@@ -1,7 +1,7 @@
 import express, {Router} from "express";
 import morgan from "morgan";
-import usersRoutes from "./routes/store.routes.js";
-import { PORT } from "./config.js";
+import {API_PREFIX, PORT} from "./config.js";
+import customer_routes from "./routes/customer.routes.js";
 
 const app = express();
 
@@ -11,10 +11,10 @@ app.use(morgan("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.use(usersRoutes);
+app.use(API_PREFIX, customer_routes);
 
 const router = Router();
-router.get("/", (req, res) => {
+router.get(API_PREFIX, (req, res) => {
     res.json({message: "Hello, Frontend!"})
 });
 

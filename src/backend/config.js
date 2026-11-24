@@ -5,3 +5,4 @@ export const DB_HOST = process.env.DB_HOST;
 export const DB_PORT = process.env.DATABASE_PORT;
 
 export const PORT = process.env.SERVER_PORT;
+export const API_PREFIX = process.env.API_PREFIX;
