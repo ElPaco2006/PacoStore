@@ -6,6 +6,7 @@ services:
       - .env
     volumes:
       - ./src/frontend:/usr/share/nginx/html
+      - ./src/common:/usr/share/nginx/html/js/common
     ports:
       - "${DOCKER_CLIENT_PORT_FORWARD}:${CLIENT_PORT}"
     networks:
