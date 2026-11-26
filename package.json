@@ -1,0 +1,25 @@
+{
+  "name": "paco-store",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node --watch src/backend/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ElPaco2006/PacoStore.git"
+  },
+  "keywords": [],
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/ElPaco2006/PacoStore/issues"
+  },
+  "homepage": "https://github.com/ElPaco2006/PacoStore#readme",
+  "dependencies": {
+    "express": "^5.3.0",
+    "morgan": "^1.12.1",
+    "pg": "^8.23.1"
+  }
+}

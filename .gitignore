@@ -1,2 +1,7 @@
 .idea
-db-data
+.vscode
+
+database/data
+node_modules
+package-lock.json
+.env
