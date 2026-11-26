@@ -18,7 +18,8 @@ services:
     user: node
     working_dir: /home/node/app    
     volumes:
-      - ./:/home/node/app
+      - ./src/backend:/home/node/app
+      - ./src/common:/home/node/app/common
     command: ['npm', 'run', 'dev']
     ports:
       - "${DOCKER_SERVER_PORT_FORWARD}:${SERVER_PORT}"
