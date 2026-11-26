@@ -28,7 +28,7 @@ create table supplier
 (
     supplier_id  uuid
         constraint supplier_pk
-            primary key,
+            primary key default uuidv7(),
     name         text not null,
     phone_number text not null,
     email        text not null
@@ -39,7 +39,7 @@ create table customer
 (
     customer_id  uuid
         constraint customer_pk
-            primary key,
+            primary key default uuidv7(),
     first_name   text not null,
     last_name    text not null,
     phone_number text not null,
@@ -51,7 +51,7 @@ create table store
 (
     store_id     uuid
         constraint store_pk
-            primary key,
+            primary key default uuidv7(),
     name         text not null,
     address      address,
     phone_number text not null,
@@ -64,7 +64,7 @@ create table user_account
 (
     user_id  uuid
         constraint user_pk
-            primary key,
+            primary key default uuidv7(),
     store_id uuid
         constraint user_store_fk
             references store (store_id),
@@ -77,9 +77,9 @@ create table product
 (
     product_id  uuid
         constraint product_pk
-            primary key,
-    sku         text  not null,
-    name        text  not null,
+            primary key default uuidv7(),
+    sku         text    not null,
+    name        text    not null,
     supplier_id uuid
         constraint product_supplier_fk
             references supplier (supplier_id),
@@ -92,18 +92,18 @@ create table sale
 (
     sale_id     uuid
         constraint sale_pk
-            primary key,
+            primary key default uuidv7(),
     customer_id uuid
         constraint sale_customer_fk
             references customer (customer_id),
     store_id    uuid
         constraint sale_store_fk
             references store (store_id),
-    user_id uuid
+    user_id     uuid
         constraint sale_user_fk
             references user_account (user_id),
     sale_when   timestamp with time zone not null
-        default now()
+                        default now()
 );
 
 -- Venta detalles
@@ -111,7 +111,7 @@ create table sale_detail
 (
     sale_detail_id uuid
         constraint sale_detail_pk
-            primary key,
+            primary key default uuidv7(),
     sale_id        uuid
         constraint sale_detail_sale_fk
             references sale (sale_id),
@@ -142,15 +142,15 @@ create table return
 (
     return_id uuid
         constraint return_pk
-            primary key,
+            primary key default uuidv7(),
     sale_id   uuid
         constraint return_sale_fk
             references sale (sale_id),
-    user_id uuid
+    user_id   uuid
         constraint return_user_fk
             references user_account (user_id),
     sale_when timestamp with time zone not null
-        default now()
+                        default now()
 );
 
 -- Devolución detalles
@@ -158,7 +158,7 @@ create table return_detail
 (
     return_detail_id uuid
         constraint return_detail_pk
-            primary key,
+            primary key default uuidv7(),
     return_id        uuid
         constraint return_detail_return_fk
             references return (return_id),
@@ -173,7 +173,7 @@ create table resupply
 (
     resupply_id   uuid
         constraint resupply_pk
-            primary key,
+            primary key default uuidv7(),
     store         uuid
         constraint resupply_store_fk
             references store (store_id),
@@ -184,6 +184,6 @@ create table resupply
         constraint resupply_supplier_fk
             references supplier (supplier_id),
     resupply_when timestamp with time zone not null
-        default now(),
+                        default now(),
     amount        numeric                  not null check ( amount > 0 )
 );
