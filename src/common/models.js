@@ -10,11 +10,11 @@ export class Customer {
 }
 
 export class Product {
-    constructor(product_id, sku, name, supplier, price) {
+    constructor(product_id, sku, name, supplier_id, price) {
         this.product_id = product_id;
         this.sku = sku;
         this.name = name;
-        this.supplier = supplier;
+        this.supplier_id = supplier_id;
         this.price = price;
     }
 }

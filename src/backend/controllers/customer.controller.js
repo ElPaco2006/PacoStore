@@ -1,5 +1,5 @@
 import { pool } from "../db.js";
-import Customer from "../../common/customer.js";
+import { Customer } from "../common/models.js"
 
 export const customer_get_all = async (req, res) => {
     const response = await pool.query("SELECT * FROM customer ORDER BY customer_id ASC");
@@ -53,7 +53,7 @@ export const customer_delete = async (req, res) => {
     ]);
 
     if (rowCount === 0) {
-        return res.status(404).json({ message: "Customer not found" });
+        return res.status(404).json({ message: "Types not found" });
     }
 
     return res.sendStatus(204);
