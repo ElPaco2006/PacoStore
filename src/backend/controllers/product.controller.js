@@ -17,15 +17,13 @@ export const product_get_by_sku = async (req, res) => {
     }
 
     const response = await pool.query("SELECT * FROM product WHERE sku = $1", [sku]);
-
     // TODO: Send idk
     if (response.rows.length === 0) {
         res.status(404);
     }
 
-    let product = new Product()
-    Object.assign(product, response.rows[0]);
-
+    const row = response.rows[0];
+    const product = new Product(row.product_id, row.sku, row.name, row.supplier_id, row.price);
     res.json({
         product: product,
     });

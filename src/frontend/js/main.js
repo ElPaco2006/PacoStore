@@ -11,21 +11,21 @@ async function add_product(event) {
     const form_data = new FormData(form);
     const {sku, quantity} = Object.fromEntries(form_data);
 
-    const response = await fetch("http://localhost:6868/api/v1/product/" + sku);
+    const response = await fetch(API_ENDPOINT + "product/" + sku);
     if (!response.ok) {
         alert("Error connecting to backend: " + response.statusText);
         return;
     }
-
-    console.log(response);
     
+    const json = await response.json();
+    add_row(json.product, quantity);
 }
 
-function add_row() {
+function add_row(product, quantity) {
     const row =  tbody.insertRow();
-    row.insertCell().innerText = 'abc';
-    row.insertCell().innerText = 'Producto';
-    row.insertCell().innerText = '1';
-    row.insertCell().innerText = '67';
-    row.insertCell().innerText = '67';
+    row.insertCell().innerText = product.sku;
+    row.insertCell().innerText = product.name;
+    row.insertCell().innerText = quantity;
+    row.insertCell().innerText = product.price;
+    row.insertCell().innerText = quantity * product.price;
 }

@@ -15,7 +15,7 @@ export class Product {
         this.sku = sku;
         this.name = name;
         this.supplier_id = supplier_id;
-        this.price = price;
+        this.price = Number(price);
     }
 }
 
